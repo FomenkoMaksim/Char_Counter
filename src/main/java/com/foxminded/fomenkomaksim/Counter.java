@@ -1,11 +1,11 @@
 package com.foxminded.fomenkomaksim;
 
-
 import java.util.*;
 
 public class Counter {
     Set<Character> uniqueChars;
-    Map<String, Integer> mapUnique;
+    Map<String, Map<String, Integer>> cache = new HashMap<>();
+
 
     public Set<Character> findUniqueChars(String string) {
         uniqueChars = new LinkedHashSet<>();
@@ -18,7 +18,7 @@ public class Counter {
 
     public Map<String, Integer> setMapUnique(String string) {
         uniqueChars = findUniqueChars(string);
-        mapUnique = new LinkedHashMap<>();
+        HashMap<String, Integer> mapUnique = new LinkedHashMap<>();
         char[] chars = string.toCharArray();
 
         int amount = 0;
