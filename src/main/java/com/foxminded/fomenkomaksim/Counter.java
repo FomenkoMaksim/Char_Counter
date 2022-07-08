@@ -3,28 +3,26 @@ package com.foxminded.fomenkomaksim;
 import java.util.*;
 
 public class Counter {
-    Set<Character> uniqueChars;
+    Set<String> uniqueChars;
     Map<String, Map<String, Integer>> cache = new HashMap<>();
 
 
-    public Set<Character> findUniqueChars(String string) {
+    public Set<String> findUniqueChars(String string) {
         uniqueChars = new LinkedHashSet<>();
-        char[] chars = string.toCharArray();
-        for (char ch : chars) {
-            uniqueChars.add(ch);
-        }
+        String[] words = string.split("");
+        uniqueChars.addAll(Arrays.asList(words));
         return uniqueChars;
     }
 
     public Map<String, Integer> setMapUnique(String string) {
         uniqueChars = findUniqueChars(string);
         HashMap<String, Integer> mapUnique = new LinkedHashMap<>();
-        char[] chars = string.toCharArray();
+        String[] words = string.split("");
 
         int amount = 0;
-        for (Character key : uniqueChars) {
-            for (Character ch : chars) {
-                if (ch.equals(key)) {
+        for (String key : uniqueChars) {
+            for (String word : words) {
+                if (word.equals(key)) {
                     amount++;
                 }
             }
