@@ -4,8 +4,9 @@ import java.util.Map;
 
 public class Printer {
     Counter counter = new Counter();
+    StringBuilder sb = new StringBuilder();
 
-    public void printResult(String str) {
+    public String printResult(String str) {
         Map<String, Integer> map;
 
         if (!counter.cache.containsKey(str)) {
@@ -14,7 +15,8 @@ public class Printer {
         map = counter.cache.get(str);
 
         for (Map.Entry<String, Integer> pair : map.entrySet()) {
-            System.out.println("\"" + pair.getKey() + "\"" + " - " + pair.getValue());
+            sb.append("\"").append(pair.getKey()).append("\"").append(" - ").append(pair.getValue()).append("\n");
         }
+        return sb.toString();
     }
 }

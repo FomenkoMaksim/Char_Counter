@@ -3,11 +3,11 @@ package com.foxminded.fomenkomaksim;
 import java.util.*;
 
 public class Counter {
-    Set<String> uniqueChars;
+    HashSet<String> uniqueChars;
     Map<String, Map<String, Integer>> cache = new HashMap<>();
 
 
-    public Set<String> findUniqueChars(String string) {
+    public HashSet<String> findUniqueChars(String string) {
         uniqueChars = new LinkedHashSet<>();
         String[] words = string.split("");
         uniqueChars.addAll(Arrays.asList(words));
