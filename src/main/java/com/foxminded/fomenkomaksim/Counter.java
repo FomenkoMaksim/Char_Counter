@@ -7,7 +7,7 @@ public class Counter {
     Map<String, Map<String, Integer>> cache = new HashMap<>();
 
 
-    public HashSet<String> findUniqueChars(String string) {
+    public Set<String> findUniqueChars(String string) {
         uniqueChars = new LinkedHashSet<>();
         String[] words = string.split("");
         uniqueChars.addAll(Arrays.asList(words));
@@ -15,7 +15,7 @@ public class Counter {
     }
 
     public Map<String, Integer> setMapUnique(String string) {
-        uniqueChars = findUniqueChars(string);
+        uniqueChars = (HashSet<String>) findUniqueChars(string);
         HashMap<String, Integer> mapUnique = new LinkedHashMap<>();
         String[] words = string.split("");
 
