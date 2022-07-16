@@ -1,6 +1,6 @@
-package com.foxminded.fomenkomaksim.cache;
+package com.foxminded.fomenkomaksim.counter;
 
-import com.foxminded.fomenkomaksim.counter.CharCounter;
+import com.foxminded.fomenkomaksim.cache.Cache;
 
 import java.util.Map;
 
