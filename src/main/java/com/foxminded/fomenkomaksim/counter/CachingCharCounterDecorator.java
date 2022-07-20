@@ -9,8 +9,6 @@ public class CachingCharCounterDecorator implements CharCounter {
     private final CharCounter charCounter;
     private final Cache<String, Map<Character, Integer>> cache;
 
-    // all args constructor
-
     public CachingCharCounterDecorator(CharCounter charCounter, Cache<String, Map<Character, Integer>> cache) {
         this.charCounter = charCounter;
         this.cache = cache;
@@ -18,12 +16,10 @@ public class CachingCharCounterDecorator implements CharCounter {
 
     @Override
     public Map<Character, Integer> count(String text) {
-        if (cache.containsKey(text)) {
-            return cache.get(text);
-        } else {
+        if (!cache.containsKey(text)) {
             cache.put(text, charCounter.count(text));
-            return charCounter.count(text);
         }
+        return cache.get(text);
     }
 }
 

@@ -15,7 +15,7 @@ public class CharCounterApp {
 
         Map<Character, Integer> result = basic.count(TEXT);
 
-        String formatted = formatter.apply(result);
+        String formatted = formatter.apply(result, TEXT);
 
         System.out.println(formatted);
     }
