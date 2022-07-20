@@ -47,17 +47,20 @@ class CachingCharCounterDecoratorTest {
         assertEquals(expected, cacheCharCounter.count(input));
 
         verify(cache).get(input);
-        verify(cache, times(0)).put(input, counter.count(input));
+        verify(counter, never()).count(any());
+        verifyNoMoreInteractions(counter, cache);
     }
 
     @Test
     void shouldCountIfCacheDontHaveResult() {
         when(cache.containsKey(input)).thenReturn(false);
         when(cache.get(input)).thenReturn(expected);
+        when(counter.count(input)).thenReturn(expected);
 
         assertEquals(expected, cacheCharCounter.count(input));
 
-        verify(cache).put(input, counter.count(input));
-        verify(cache).get(input);
+        verify(cache).put(input, expected);
+        verify(cache).get(anyString());
+        verifyNoMoreInteractions(cache);
     }
 }
